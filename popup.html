@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to CSS file -->
+</head>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.thank-you-container {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 7%;
+    left: 28%;
+    
+    transform: translateX(-50%);
+    text-align: center;
+    /* background-color: #fff; */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    animation: slide-in 0.5s ease-in-out, pulse 2s infinite;
+}
+
+@keyframes slide-in {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+p {
+    font-size: 18px;
+    color: #555;
+    margin-top: 10px;
+}
+
+.heart {
+    color: red;
+    animation: heartbeat 1s infinite;
+    font-size: 24px;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+</style>
+<body>
+    <form id="myForm">
+        <input type="submit" value="Submit" class="btn">
+    </form>
+
+    <div class="thank-you-container" id="thankYouContainer">
+        <h1>Thank You <span class="heart">&hearts;</span></h1>
+        <p>Your message has been received. We appreciate your support!</p>
+    </div>
+    <script>
+        // Get the form element
+const form = document.getElementById('myForm');
+
+// Get the thank you container
+const thankYouContainer = document.getElementById('thankYouContainer');
+
+// Add event listener to the form for submit event
+form.addEventListener('submit', function(event) {
+    // Prevent the default form submission
+    event.preventDefault();
+
+    // Display the thank you message
+    thankYouContainer.style.display = 'block';
+
+    // Hide the thank you message after 3 seconds
+    setTimeout(function() {
+        thankYouContainer.style.display = 'none';
+    }, 3000);
+});
+
+    </script>
+
+    <script src="script.js"></script> <!-- Link to JavaScript file -->
+</body>
+</html>
